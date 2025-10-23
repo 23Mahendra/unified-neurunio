@@ -1,0 +1,42 @@
+{
+  "$schema": "https://cosmosio.dev/schemas/features.schema.json",
+  "version": 1,
+  "environment": "production",
+  "features": [
+    {
+      "id": "monitoring-dashboard",
+      "name": "Monitoring Dashboard",
+      "enabled": true,
+      "routes": ["/api/monitoring/*"],
+      "notes": "Requires x-monitoring-token header"
+    },
+    {
+      "id": "analytics",
+      "name": "Usage Analytics",
+      "enabled": false,
+      "notes": "Disabled under Bulletproof Mode"
+    },
+    {
+      "id": "cloudwatch",
+      "name": "AWS CloudWatch Telemetry",
+      "enabled": false,
+      "notes": "Disabled in offline or telemetry-disabled mode"
+    },
+    {
+      "id": "ai-chat",
+      "name": "AI Chat API",
+      "enabled": true,
+      "routes": ["/api/ai", "/api/bedrock/chat"]
+    },
+    {
+      "id": "payments",
+      "name": "Payments & Subscriptions",
+      "enabled": true,
+      "routes": ["/api/subscription", "/api/payments"]
+    }
+  ],
+  "metadata": {
+    "createdBy": "automation",
+    "updatedAt": "2025-10-23T00:00:00.000Z"
+  }
+}

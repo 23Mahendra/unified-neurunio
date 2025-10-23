@@ -1,0 +1,18 @@
+{
+  "bulletproofMode": true,
+  "offlineMode": false,
+  "disableTelemetry": true,
+  "disableAnalytics": true,
+  "requireAuthGuards": false,
+  "requireWebhookProof": false,
+  "whitelist": {
+    "publicRoutes": [
+      "/",
+      "/api/monitoring/health",
+      "/api/monitoring/metrics",
+      "/api/monitoring/errors",
+      "/api/monitoring/logs",
+      "/static/*"
+    ]
+  }
+}
