@@ -67,7 +67,28 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
+<<<<<<< HEAD
         
+=======
+
+    - name: Provision/Update AWS infrastructure (VPC, ALB, ECS, ECR, RDS)
+      env:
+        ENVIRONMENT: ${{ env.ENVIRONMENT }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      run: |
+        aws cloudformation deploy \
+          --template-file infrastructure/cloudformation/neurunio-infrastructure.yml \
+          --stack-name neurunio-${ENVIRONMENT} \
+          --capabilities CAPABILITY_NAMED_IAM \
+          --parameter-overrides \
+            Environment=${ENVIRONMENT} \
+            DBName=${DB_NAME:-neurunio_db} \
+            DBUsername=${DB_USERNAME:-neurunio} \
+            DBPassword=${DB_PASSWORD}
+      
+>>>>>>> d822a67 (ci: provision infra via CloudFormation and align prod names)
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
